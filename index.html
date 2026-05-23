@@ -13,186 +13,244 @@
   --navy:#2d3060;--text:#2d2d4a;--soft:#6a6090;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Nunito',sans-serif;color:var(--text);overflow-x:hidden}
+body{font-family:'Nunito',sans-serif;color:var(--text);overflow-x:hidden;cursor:none}
+
+/* CUSTOM CURSOR SYSTEM */
+#cur{position:fixed;width:20px;height:20px;background:radial-gradient(circle,#fff 30%,rgba(245,184,208,.65));border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);z-index:9999;box-shadow:0 0 14px rgba(245,184,208,.9)}
+#cur2{position:fixed;width:9px;height:9px;background:rgba(245,184,208,.55);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);z-index:9998}
 #bc{position:fixed;inset:0;pointer-events:none;z-index:0}
 
-/* HERO SECTION */
-.hero{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;
-  background: linear-gradient(135deg, var(--sky2), var(--blush));
+/* LAYOUT CONTAINER & PAGES */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
-.hero-box{position:relative;z-index:2;background:rgba(255,255,255,.85);padding:40px 30px;border-radius:30px;box-shadow:0 16px 48px rgba(106,96,144,.15);backdrop-filter:blur(10px);max-width:600px;width:100%;border:2px solid #fff}
-.hero-title{font-family:'Playfair Display',serif;font-size:3rem;color:var(--navy);font-weight:700;margin-bottom:12px;line-height:1.2}
-.hero-sub{font-size:1.15rem;color:var(--soft);line-height:1.6;margin-bottom:30px}
 
-/* COUNTDOWN STYLE */
-.cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:30px}
-.cd-box{background:white;padding:12px;border-radius:16px;box-shadow:0 6px 16px rgba(0,0,0,.04);border:1px solid var(--pink2)}
-.cd-num{font-size:1.8rem;font-weight:900;color:var(--pink3);display:block}
-.cd-lbl{font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:var(--soft);font-weight:700}
+/* SECTION BASE STYLES */
+.sec{min-height:100vh;padding:100px 24px 80px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;z-index:1}
+.sec-title{font-family:'Playfair Display',serif;font-size:3rem;color:var(--navy);margin-bottom:30px;text-align:center;line-height:1.2}
+.card{background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border-radius:30px;padding:45px 35px;box-shadow:0 16px 48px rgba(106,96,144,.15);max-width:650px;width:100%;border:2px solid #fff;position:relative;overflow:hidden;text-align:center}
 
-/* BUTTONS */
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--pink3);color:white;text-decoration:none;padding:14px 32px;border-radius:50px;font-weight:800;font-size:1.05rem;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(232,122,170,.3);transition:all .3s ease}
-.btn:hover{background:var(--navy);box-shadow:0 8px 24px rgba(45,48,96,.3);transform:translateY(-2px)}
+/* HERO INITIAL PAGE */
+.hero{background:linear-gradient(135deg, var(--sky2), var(--blush))}
+.hero-title{font-family:'Playfair Display',serif;font-size:3.8rem;color:var(--navy);font-weight:700;margin-bottom:15px;line-height:1.15}
+.hero-sub{font-size:1.2rem;color:var(--soft);line-height:1.6;margin-bottom:35px}
 
-/* CARD STYLES FOR CONTENT */
-.sec{padding:100px 24px;display:flex;flex-direction:column;align-items:center;position:relative;z-index:1}
-.sec-title{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--navy);margin-bottom:40px;text-align:center}
-.card{background:white;border-radius:30px;padding:40px 30px;box-shadow:0 16px 40px rgba(0,0,0,.05);max-width:700px;width:100%;border:1px solid var(--pink2);position:relative;overflow:hidden}
+/* COUNTDOWN DESIGN */
+.cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:35px}
+.cd-box{background:white;padding:15px 10px;border-radius:20px;box-shadow:0 8px 20px rgba(0,0,0,.04);border:1px solid var(--pink2)}
+.cd-num{font-size:2.2rem;font-weight:900;color:var(--pink3);display:block}
+.cd-lbl{font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--soft);font-weight:700}
 
-/* LETTER */
-.letter-p{font-family:'Caveat',cursive;font-size:1.65rem;line-height:1.6;color:var(--text);margin-bottom:20px}
+/* STANDARD BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--pink3);color:white;text-decoration:none;padding:15px 36px;border-radius:50px;font-weight:800;font-size:1.1rem;border:none;cursor:pointer;box-shadow:0 8px 26px rgba(232,122,170,.35);transition:all .3s ease}
+.btn:hover{background:var(--navy);box-shadow:0 8px 26px rgba(45,48,96,.35);transform:translateY(-3px)}
 
-/* GALLERY GRID */
-.gal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;width:100%;max-width:900px;padding:0 24px}
-.gal-item{background:white;padding:12px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.06);border:1px solid var(--pink2);transition:transform .3s ease}
-.gal-item:hover{transform:scale(1.03) rotate(1deg)}
-.gal-img{width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:12px}
-.gal-cap{font-family:'Caveat',cursive;font-size:1.4rem;text-align:center;color:var(--soft)}
+/* LETTER MESSAGE STYLES */
+.letter-p{font-family:'Caveat',cursive;font-size:1.8rem;line-height:1.6;color:var(--text);margin-bottom:22px;text-align:left}
 
-/* DINNER FORM ELEMENTS */
-.dinner-box { text-align: center; margin-top: 20px; }
-input[type="date"], input[type="email"] { padding: 12px; border: 2px solid var(--pink2); border-radius: 10px; font-size: 1rem; width: 100%; max-width: 300px; margin-bottom: 15px; font-family: inherit; }
+/* MULTI-PHOTO GALLERY GRID (6 PHOTOS) */
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:25px;width:100%;max-width:900px;margin-top:20px}
+.gal-item{background:white;padding:14px;border-radius:24px;box-shadow:0 12px 35px rgba(0,0,0,.06);border:1px solid var(--pink2);transition:all .3s ease;text-align:center}
+.gal-item:hover{transform:scale(1.04) rotate(1.5deg);z-index:2}
+.gal-img{width:100%;height:280px;object-fit:cover;border-radius:16px;margin-bottom:14px}
+.gal-cap{font-family:'Caveat',cursive;font-size:1.6rem;color:var(--soft);font-weight:600}
 
-.burst{position:fixed;font-size:2rem;pointer-events:none;z-index:9999;animation:b-anim .7s ease-out forwards}
-@keyframes b-anim{0%{transform:translate(-50,-50%) scale(.5);opacity:1}100%{transform:translate(var(--mx),var(--my)) scale(1.5);opacity:0}}
+/* DINNER RESERVATION STYLES */
+.dinner-form{margin-top:25px}
+input[type="date"],input[type="email"]{padding:14px 18px;border:2px solid var(--pink2);border-radius:14px;font-size:1.05rem;font-family:inherit;color:var(--text);width:100%;max-width:320px;margin-bottom:16px;outline:none;transition:all .3s;background-color:#fff}
+input:focus{border-color:var(--pink3);box-shadow:0 0 10px rgba(232,122,170,0.15)}
+
+.msg-box{margin-top:25px;padding:22px;background:var(--blush);border-radius:18px;color:var(--navy);font-size:1.15rem;line-height:1.65;display:none;border:1px solid var(--pink)}
+
+/* BURST ANIMATION */
+.burst{position:fixed;font-size:2.2rem;pointer-events:none;z-index:9999;animation:b-anim .7s ease-out forwards}
+@keyframes b-anim{0%{transform:translate(-50%,-50%) scale(.4);opacity:1}100%{transform:translate(var(--mx),var(--my)) scale(1.6);opacity:0}}
 </style>
 </head>
 <body>
 
-  <div class="hero">
-    <div class="hero-box">
-      <h1 class="hero-title">Happy Birthday Fayi! 🐟🐱💕</h1>
-      <p class="hero-sub">Selamat ulang tahun yang paling spesial buat kamu. Di bawah ini adalah sisa waktu menuju hari bahagiamu!</p>
-      
-      <div class="cd-grid">
-        <div class="cd-box"><span class="cd-num" id="d">-</span><span class="cd-lbl">Hari</span></div>
-        <div class="cd-box"><span class="cd-num" id="h">-</span><span class="cd-lbl">Jam</span></div>
-        <div class="cd-box"><span class="cd-num" id="m">-</span><span class="cd-lbl">Menit</span></div>
-        <div class="cd-box"><span class="cd-num" id="s">-</span><span class="cd-lbl">Detik</span></div>
-      </div>
-      
-      <button class="btn" onclick="document.getElementById('letter').scrollIntoView()">Buka Surat 💌</button>
-    </div>
-  </div>
+  <div id="cur"></div>
+  <div id="cur2"></div>
+  <canvas id="bc"></canvas>
 
-  <div class="sec" id="letter" style="background:#fffafc">
-    <h2 class="sec-title">Sebuah Surat Kecil ✨</h2>
-    <div class="card">
-      <p class="letter-p">Hai Fayi, 🐟🐱</p>
-      <p class="letter-p">Selamat ulang tahun ya! Semoga di tahun ini kamu selalu diberikan kebahagiaan, kesehatan, dan semua impian kamu bisa tercapai satu per satu.</p>
-      <p class="letter-p">Terima kasih sudah menjadi sosok yang luar biasa selama ini. Halaman ini sengaja dibuat khusus buat kamu sebagai hadiah kecil di hari spesialmu.</p>
-      <p class="letter-p" style="text-align:right">Dari seseorang yang selalu mendoakanmu, ❤️</p>
-      <br>
-      <div style="text-align:center">
-         <button class="btn" onclick="document.getElementById('gallery').scrollIntoView()">Lihat Kenangan 📸</button>
-      </div>
-    </div>
-  </div>
+  <audio id="bg-music" src="images/lagu.mp3" loop autoplay></audio>
 
-  <div class="sec" id="gallery" style="background:#f5f9fc">
-    <h2 class="sec-title">Galeri Foto Fayi 🌸</h2>
-    <div class="gal-grid">
-      
-      <div class="gal-item">
-        <img class="gal-img" src="https://picsum.photos/400/500?random=1" alt="Fayi 1"/>
-        <p class="gal-cap">Momen Manis ✨</p>
-      </div>
-      
-      <div class="gal-item">
-        <img class="gal-img" src="https://picsum.photos/400/500?random=2" alt="Fayi 2"/>
-        <p class="gal-cap">Senyum Terbaik 🌸</p>
-      </div>
-      
-      <div class="gal-item">
-        <img class="gal-img" src="https://picsum.photos/400/500?random=3" alt="Fayi 3"/>
-        <p class="gal-cap">Hari yang Bahagia 💕</p>
-      </div>
+  <div class="page-container">
 
-    </div>
-    <br><br>
-    <button class="btn" onclick="document.getElementById('dinner').scrollIntoView()">Rencana Dinner 🍔</button>
-  </div>
-
-  <div class="sec" id="dinner" style="background:#fffafc">
-    <h2 class="sec-title">Pilih Tanggal Birthday Dinner 🍔</h2>
-    <div class="card" style="text-align:center;">
-      <p style="font-size:1.1rem; margin-bottom: 20px;">Yuk atur waktu luang kamu buat makan-makan bareng!</p>
-      
-      <div class="dinner-box">
-        <input type="date" id="dinner-date" value="2026-05-23"><br>
-        <button class="btn" onclick="confirmDate()">Konfirmasi Tanggal 📅</button>
+    <section class="sec hero" id="page-hero">
+      <div class="card hero-box">
+        <h1 class="hero-title">Happy Birthday Fayi 🐟🐱💕</h1>
+        <p class="hero-sub">Today is all about you! Let's countdown to the moment you arrived and made the world a whole lot brighter.</p>
         
-        <div id="confirmed-msg" style="display:none; margin-top:30px; padding-top:20px; border-top:2px dashed var(--pink2)">
-          <p id="dinner-text" style="font-size:1.15rem; line-height:1.6; color:var(--navy)"></p>
-          
-          <div id="email-section" style="display:none; margin-top:20px">
-            <input type="email" id="notif-email" placeholder="Masukkan email kamu..."><br>
-            <button class="btn" onclick="sendNotif()">Kirim Notifikasi 📧</button>
-          </div>
-          <p id="notif-sent-txt" style="margin-top:20px; color:green; font-weight:bold"></p>
+        <div class="cd-grid">
+          <div class="cd-box"><span class="cd-num" id="d">-</span><span class="cd-lbl">Days</span></div>
+          <div class="cd-box"><span class="cd-num" id="h">-</span><span class="cd-lbl">Hours</span></div>
+          <div class="cd-box"><span class="cd-num" id="m">-</span><span class="cd-lbl">Mins</span></div>
+          <div class="cd-box"><span class="cd-num" id="s">-</span><span class="cd-lbl">Secs</span></div>
+        </div>
+        
+        <button class="btn" onclick="document.getElementById('page-letter').scrollIntoView()">Read Your Letter 💌</button>
+      </div>
+    </section>
+
+    <section class="sec" id="page-letter" style="background:linear-gradient(to bottom, #fffafc, #ffffff)">
+      <h2 class="sec-title">A Little Message For You ✨</h2>
+      <div class="card">
+        <p class="letter-p">Dear Fayi, 🐟🐱</p>
+        <p class="letter-p">Happy birthday! I wanted to create something special just for you, a little corner on the internet to celebrate another wonderful year of your life.</p>
+        <p class="letter-p">Thank you for being such an amazing person. I hope this year brings you infinite smiles, delicious burgers, and all the happiness you deserve.</p>
+        <p class="letter-p" style="text-align:right; margin-top:45px; font-weight:700;">With love, ❤️</p>
+        
+        <div style="text-align:center; margin-top:35px">
+          <button class="btn" onclick="document.getElementById('page-gallery').scrollIntoView()">View Moments 📸</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="page-gallery" style="background-color:#f5f9fc">
+      <h2 class="sec-title">Captured Memories 🌸</h2>
+      
+      <div class="gal-grid">
+        <div class="gal-item">
+          <img class="gal-img" src="images/foto1.jpg" alt="Moments 1"/>
+          <p class="gal-cap">Sweetest smile ✨</p>
+        </div>
+        <div class="gal-item">
+          <img class="gal-img" src="images/foto2.jpg" alt="Moments 2"/>
+          <p class="gal-cap">Always shining 🌸</p>
+        </div>
+        <div class="gal-item">
+          <img class="gal-img" src="images/foto3.jpg" alt="Moments 3"/>
+          <p class="gal-cap">A beautiful day 💕</p>
+        </div>
+        <div class="gal-item">
+          <img class="gal-img" src="images/foto4.jpg" alt="Moments 4"/>
+          <p class="gal-cap">Wonderful memories 🌟</p>
+        </div>
+        <div class="gal-item">
+          <img class="gal-img" src="images/foto5.jpg" alt="Moments 5"/>
+          <p class="gal-cap">Joyful times 🥰</p>
+        </div>
+        <div class="gal-item">
+          <img class="gal-img" src="images/foto6.jpg" alt="Moments 6"/>
+          <p class="gal-cap">Special day 🎉</p>
         </div>
       </div>
 
-    </div>
+      <div style="margin-top:60px">
+        <button class="btn" onclick="document.getElementById('page-dinner').scrollIntoView()">Plan Dinner 🍔</button>
+      </div>
+    </section>
+
+    <section class="sec" id="page-dinner" style="background:linear-gradient(to bottom, #ffffff, #fffcfd)">
+      <h2 class="sec-title">Let's Celebrate! 🍔</h2>
+      <div class="card" style="max-width:580px">
+        <p style="font-size:1.25rem; color:var(--soft); margin-bottom:25px">Pick a date for your special birthday dinner:</p>
+        
+        <div class="dinner-form">
+          <input type="date" id="dinner-date" value="2026-05-23"/><br/>
+          <button class="btn" onclick="confirmDate()">Confirm Date 📅</button>
+          
+          <div id="confirmed-msg" class="msg-box">
+            <p id="dinner-text"></p>
+            
+            <div id="email-section" style="display:none; margin-top:25px">
+              <input type="email" id="notif-email" placeholder="Enter your email..."/><br/>
+              <button class="btn" onclick="sendNotif()">Notify Me 📧</button>
+            </div>
+            
+            <div id="notif-sent-txt" class="msg-box" style="background-color:#e6f9ed; color:#1e4620; border-color:#c2f0d1; margin-top:20px"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </div>
 
   <script>
-    // 1. KODE HITUNG MUNDUR (COUNTDOWN)
-    const td = new Date('2026-05-23T00:00:00').getTime();
-    function updateCd() {
-      const n = new Date().getTime(), diff = td - n;
-      if (diff <= 0) {
-        document.getElementById('d').textContent = '0';
-        document.getElementById('h').textContent = '0';
-        document.getElementById('m').textContent = '0';
-        document.getElementById('s').textContent = '0';
-        return;
-      }
-      document.getElementById('d').textContent = Math.floor(diff / 864e5);
-      document.getElementById('h').textContent = Math.floor((diff % 864e5) / 36e5);
-      document.getElementById('m').textContent = Math.floor((diff % 36e5) / 6e4);
-      document.getElementById('s').textContent = Math.floor((diff % 6e4) / 1e3);
-    }
-    setInterval(updateCd, 1000);
-    updateCd();
+    // 1. MOUSE CURSOR TRAILING SYSTEM
+    const c=document.getElementById('cur'),c2=document.getElementById('cur2');
+    window.addEventListener('mousemove',e=>{
+      c.style.left=e.clientX+'px';c.style.top=e.clientY+'px';
+      c2.style.left=e.clientX+'px';c2.style.top=e.clientY+'px';
+    });
 
-    // 2. KODE INTERAKTIF DINNER & BURST EMOJI
-    const BE = ['🎉', '🎂', '💖', '🐟', '🐱', '✨'];
+    // 2. BACKGROUND CANVAS FLOATING SHAPES ANIMATION
+    const canvas=document.getElementById('bc'),ctx=canvas.getContext('2d');
+    let w,h,shapes=[];
+    function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight}
+    window.addEventListener('resize',resize);resize();
     
-    function confirmDate() {
-      const dv = document.getElementById('dinner-date').value;
-      if (!dv) { alert('Pilih tanggalnya dulu ya! 📅'); return; }
-      
-      const ds = new Date(dv).toLocaleDateString('id-ID', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
-      
-      document.getElementById('dinner-text').innerHTML = `Fayi telah memilih tanggal <strong>${ds}</strong> untuk birthday dinner di Dan's Burger! 🍔🐟<br><br><em>Masukkan email di bawah ini untuk mendapatkan notifikasi! 💕</em>`;
-      document.getElementById('confirmed-msg').style.display = 'block';
-      document.getElementById('email-section').style.display = 'block';
-      
-      // Efek dekorasi kembang api emoji
-      for (let j = 0; j < 15; j++) {
-        setTimeout(() => {
-          const b = document.createElement('div');
-          b.className = 'burst';
-          b.textContent = BE[Math.floor(Math.random() * BE.length)];
-          b.style.left = (Math.random() * window.innerWidth) + 'px';
-          b.style.top = (Math.random() * window.innerHeight * .7 + window.scrollY) + 'px';
-          b.style.setProperty('--mx', (Math.random() * 200 - 100) + 'px');
-          b.style.setProperty('--my', (Math.random() * -200 - 50) + 'px');
-          document.body.appendChild(b);
-          setTimeout(() => b.remove(), 700);
-        }, j * 60);
+    for(let i=0;i<25;i++){
+      shapes.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*4+2,v:Math.random()*0.5+0.2});
+    }
+    function draw(){
+      ctx.clearRect(0,0,w,h);ctx.fillStyle='rgba(245,184,208,0.3)';
+      shapes.forEach(s=>{
+        s.y-=s.v;
+        if(s.y<0){s.y=h;s.x=Math.random()*w}
+        ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+
+    // 3. COUNTDOWN REAL-TIME LOGIC
+    const td=new Date('2026-05-23T00:00:00').getTime();
+    function updateCd(){
+      const n=new Date().getTime(),diff=td-n;
+      if(diff<=0){
+        document.getElementById('d').textContent='0';document.getElementById('h').textContent='0';
+        document.getElementById('m').textContent='0';document.getElementById('s').textContent='0';return;
       }
+      document.getElementById('d').textContent=Math.floor(diff/864e5);
+      document.getElementById('h').textContent=Math.floor((diff%864e5)/36e5);
+      document.getElementById('m').textContent=Math.floor((diff%36e5)/6e4);
+      document.getElementById('s').textContent=Math.floor((diff%6e4)/1e3);
+    }
+    setInterval(updateCd,1000);updateCd();
+
+    // 4. INTERACTION SYSTEM & EMOJI BURST CONTROL
+    const BE=['🎉','🎂','💖','🐟','🐱','✨','🍔'];
+    
+    function confirmDate(){
+      const dv=document.getElementById('dinner-date').value;
+      if(!dv){alert('Please pick a date first! 📅');return}
+      
+      // Memicu pemutaran musik latar saat interaksi pertama
+      const music = document.getElementById('bg-music');
+      music.play().catch(() => console.log("Musik diputar otomatis setelah klik."));
+
+      const ds=new Date(dv).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+      
+      document.getElementById('dinner-text').innerHTML=`Fayi has chosen <strong>${ds}</strong> for the birthday dinner at Dan's Burger! 🍔🐟<br><br><em>Now enter your email below so I can notify you! 💕</em>`;
+      document.getElementById('confirmed-msg').style.display='block';
+      document.getElementById('email-section').style.display='block';
+      
+      // Efek burst mengikuti koordinat scroll saat ini
+      for(let j=0;j<12;j++)setTimeout(()=>{
+        const b=document.createElement('div');b.className='burst';
+        b.textContent=BE[Math.floor(Math.random()*BE.length)];
+        b.style.left=(Math.random()*window.innerWidth)+'px';
+        b.style.top=(Math.random()*window.innerHeight*.7+window.scrollY)+'px';
+        b.style.setProperty('--mx',(Math.random()*200-100)+'px');
+        b.style.setProperty('--my',(Math.random()*-200-50)+'px');
+        document.body.appendChild(b);setTimeout(()=>b.remove(),700);
+      },j*60);
     }
 
-    function sendNotif() {
-      const email = document.getElementById('notif-email').value.trim();
-      if (!email || !email.includes('@')) { alert('Mohon masukkan email yang valid! 📧'); return; }
+    function sendNotif(){
+      const email=document.getElementById('notif-email').value.trim();
+      if(!email||!email.includes('@')){alert('Please enter a valid email! 📧');return}
+      const dv=document.getElementById('dinner-date').value;
+      const ds=new Date(dv).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
       
-      const dv = document.getElementById('dinner-date').value;
-      const ds = new Date(dv).toLocaleDateString('id-ID', { weekday: 'long', month: 'long', day: 'numeric' });
-      
-      document.getElementById('notif-sent-txt').innerHTML = `✅ <strong>Semua tersimpan dengan aman!</strong><br>Notifikasi akan dikirimkan ke <strong>${email}</strong><br>Pilihan Fayi: <strong>${ds}</strong> di Dan's Burger 🍔<br><br><em style="font-size:.85rem; color:var(--soft)">💡 Silakan screenshot halaman ini atau catat tanggalnya ya...</em>`;
+      const sentBox = document.getElementById('notif-sent-txt');
+      sentBox.innerHTML=`✅ <strong>All set!</strong><br>Notification will go to <strong>${email}</strong><br>Fayi chose: <strong>${ds}</strong> at Dan's Burger 🍔<br><br><em style="font-size:.85rem;opacity:0.8">💡 Screenshot this or copy the date...</em>`;
+      sentBox.style.display='block';
     }
   </script>
 </body>
