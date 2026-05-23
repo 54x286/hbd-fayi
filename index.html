@@ -1,79 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Happy Birthday Fayi 🐟🐱💕</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Caveat:wght@600;700&display=swap" rel="stylesheet"/>
-  
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --sky: #a8d4f5; --sky2: #c8e8f8; --pink: #f5b8d0; --pink2: #fce4ee;
-      --pink3: #e87aaa; --blush: #ffd6e7; --lilac: #d4b8f5; --gold: #f5d76e;
-      --navy: #2d3060; --text: #2d2d4a; --soft: #6a6090;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Nunito', sans-serif; color: var(--text); overflow-x: hidden; }
-    
-    /* BACKGROUND & HERO SECTIONS */
-    .hero { 
-      min-height: 100vh; 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      justify-content: center; 
-      text-align: center; 
-      padding: 40px 24px; 
-      background: linear-gradient(135deg, var(--sky2), var(--blush)); /* Ganti background base64 dengan gradient pastel */
-    }
-    
-    h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--navy); margin-bottom: 10px; }
-    p { font-size: 1.2rem; color: var(--soft); margin-bottom: 20px; }
-    
-    /* FORM INPUT SECTIONS */
-    .input-section { margin-top: 30px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 8px 24px rgba(0,0,0,0.05); }
-    input[type="email"], select, input[type="date"] { 
-      padding: 10px; width: 100%; max-width: 300px; margin-bottom: 15px; border: 2px solid var(--pink2); border-radius: 8px; font-size: 1rem; 
-    }
-    button { 
-      background: var(--pink3); color: white; border: none; padding: 12px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; transition: 0.3s; 
-    }
-    button:hover { background: var(--navy); }
-    
-    /* DECORATIONS */
-    .burst { position: fixed; font-size: 2rem; pointer-events: none; animation: floatUp 0.7s ease-out forwards; }
-    @keyframes floatUp { 0% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(-100px) scale(1.5); opacity: 0; } }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Happy Birthday Fayi 🐟🐱💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Caveat:wght@600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --sky:#a8d4f5;--sky2:#c8e8f8;--pink:#f5b8d0;--pink2:#fce4ee;
+  --pink3:#e87aaa;--blush:#ffd6e7;--lilac:#d4b8f5;--gold:#f5d76e;
+  --navy:#2d3060;--text:#2d2d4a;--soft:#6a6090;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;color:var(--text);overflow-x:hidden}
+#bc{position:fixed;inset:0;pointer-events:none;z-index:0}
+
+/* HERO SECTION */
+.hero{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;
+  background: linear-gradient(135deg, var(--sky2), var(--blush));
+}
+.hero-box{position:relative;z-index:2;background:rgba(255,255,255,.85);padding:40px 30px;border-radius:30px;box-shadow:0 16px 48px rgba(106,96,144,.15);backdrop-filter:blur(10px);max-width:600px;width:100%;border:2px solid #fff}
+.hero-title{font-family:'Playfair Display',serif;font-size:3rem;color:var(--navy);font-weight:700;margin-bottom:12px;line-height:1.2}
+.hero-sub{font-size:1.15rem;color:var(--soft);line-height:1.6;margin-bottom:30px}
+
+/* COUNTDOWN STYLE */
+.cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:30px}
+.cd-box{background:white;padding:12px;border-radius:16px;box-shadow:0 6px 16px rgba(0,0,0,.04);border:1px solid var(--pink2)}
+.cd-num{font-size:1.8rem;font-weight:900;color:var(--pink3);display:block}
+.cd-lbl{font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:var(--soft);font-weight:700}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--pink3);color:white;text-decoration:none;padding:14px 32px;border-radius:50px;font-weight:800;font-size:1.05rem;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(232,122,170,.3);transition:all .3s ease}
+.btn:hover{background:var(--navy);box-shadow:0 8px 24px rgba(45,48,96,.3);transform:translateY(-2px)}
+
+/* CARD STYLES FOR CONTENT */
+.sec{padding:100px 24px;display:flex;flex-direction:column;align-items:center;position:relative;z-index:1}
+.sec-title{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--navy);margin-bottom:40px;text-align:center}
+.card{background:white;border-radius:30px;padding:40px 30px;box-shadow:0 16px 40px rgba(0,0,0,.05);max-width:700px;width:100%;border:1px solid var(--pink2);position:relative;overflow:hidden}
+
+/* LETTER */
+.letter-p{font-family:'Caveat',cursive;font-size:1.65rem;line-height:1.6;color:var(--text);margin-bottom:20px}
+
+/* GALLERY GRID */
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;width:100%;max-width:900px;padding:0 24px}
+.gal-item{background:white;padding:12px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.06);border:1px solid var(--pink2);transition:transform .3s ease}
+.gal-item:hover{transform:scale(1.03) rotate(1deg)}
+.gal-img{width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:12px}
+.gal-cap{font-family:'Caveat',cursive;font-size:1.4rem;text-align:center;color:var(--soft)}
+
+/* DINNER FORM ELEMENTS */
+.dinner-box { text-align: center; margin-top: 20px; }
+input[type="date"], input[type="email"] { padding: 12px; border: 2px solid var(--pink2); border-radius: 10px; font-size: 1rem; width: 100%; max-width: 300px; margin-bottom: 15px; font-family: inherit; }
+
+.burst{position:fixed;font-size:2rem;pointer-events:none;z-index:9999;animation:b-anim .7s ease-out forwards}
+@keyframes b-anim{0%{transform:translate(-50,-50%) scale(.5);opacity:1}100%{transform:translate(var(--mx),var(--my)) scale(1.5);opacity:0}}
+</style>
 </head>
 <body>
 
   <div class="hero">
-    <h1>Happy Birthday Fayi 🐟🐱💕</h1>
-    <p>Selamat ulang tahun! Yuk atur tanggal makan-makan bareng.</p>
-    
-    <div class="input-section">
-      <h3>Pilih Tanggal Birthday Dinner 🍔</h3>
-      <br>
-      <input type="date" id="dinner-date" value="2026-05-23">
-      <br>
-      <button onclick="confirmDate()">Konfirmasi Tanggal</button>
+    <div class="hero-box">
+      <h1 class="hero-title">Happy Birthday Fayi! 🐟🐱💕</h1>
+      <p class="hero-sub">Selamat ulang tahun yang paling spesial buat kamu. Di bawah ini adalah sisa waktu menuju hari bahagiamu!</p>
       
-      <div id="confirmed-msg" style="display:none; margin-top: 20px;">
-        <p id="dinner-text"></p>
-        
-        <div id="email-section" style="display:none;">
-          <input type="email" id="notif-email" placeholder="Masukkan email kamu..."><br>
-          <button onclick="sendNotif()">Kirim Notifikasi 📧</button>
-        </div>
-        <p id="notif-sent-txt" style="margin-top: 15px; color: green; font-weight: bold;"></p>
+      <div class="cd-grid">
+        <div class="cd-box"><span class="cd-num" id="d">-</span><span class="cd-lbl">Hari</span></div>
+        <div class="cd-box"><span class="cd-num" id="h">-</span><span class="cd-lbl">Jam</span></div>
+        <div class="cd-box"><span class="cd-num" id="m">-</span><span class="cd-lbl">Menit</span></div>
+        <div class="cd-box"><span class="cd-num" id="s">-</span><span class="cd-lbl">Detik</span></div>
+      </div>
+      
+      <button class="btn" onclick="document.getElementById('letter').scrollIntoView()">Buka Surat 💌</button>
+    </div>
+  </div>
+
+  <div class="sec" id="letter" style="background:#fffafc">
+    <h2 class="sec-title">Sebuah Surat Kecil ✨</h2>
+    <div class="card">
+      <p class="letter-p">Hai Fayi, 🐟🐱</p>
+      <p class="letter-p">Selamat ulang tahun ya! Semoga di tahun ini kamu selalu diberikan kebahagiaan, kesehatan, dan semua impian kamu bisa tercapai satu per satu.</p>
+      <p class="letter-p">Terima kasih sudah menjadi sosok yang luar biasa selama ini. Halaman ini sengaja dibuat khusus buat kamu sebagai hadiah kecil di hari spesialmu.</p>
+      <p class="letter-p" style="text-align:right">Dari seseorang yang selalu mendoakanmu, ❤️</p>
+      <br>
+      <div style="text-align:center">
+         <button class="btn" onclick="document.getElementById('gallery').scrollIntoView()">Lihat Kenangan 📸</button>
       </div>
     </div>
   </div>
 
-  <script>
-    const BE = ['🎉', '🎂', '💖', '🐟', '🐱', '✨'];
+  <div class="sec" id="gallery" style="background:#f5f9fc">
+    <h2 class="sec-title">Galeri Foto Fayi 🌸</h2>
+    <div class="gal-grid">
+      
+      <div class="gal-item">
+        <img class="gal-img" src="https://picsum.photos/400/500?random=1" alt="Fayi 1"/>
+        <p class="gal-cap">Momen Manis ✨</p>
+      </div>
+      
+      <div class="gal-item">
+        <img class="gal-img" src="https://picsum.photos/400/500?random=2" alt="Fayi 2"/>
+        <p class="gal-cap">Senyum Terbaik 🌸</p>
+      </div>
+      
+      <div class="gal-item">
+        <img class="gal-img" src="https://picsum.photos/400/500?random=3" alt="Fayi 3"/>
+        <p class="gal-cap">Hari yang Bahagia 💕</p>
+      </div>
 
+    </div>
+    <br><br>
+    <button class="btn" onclick="document.getElementById('dinner').scrollIntoView()">Rencana Dinner 🍔</button>
+  </div>
+
+  <div class="sec" id="dinner" style="background:#fffafc">
+    <h2 class="sec-title">Pilih Tanggal Birthday Dinner 🍔</h2>
+    <div class="card" style="text-align:center;">
+      <p style="font-size:1.1rem; margin-bottom: 20px;">Yuk atur waktu luang kamu buat makan-makan bareng!</p>
+      
+      <div class="dinner-box">
+        <input type="date" id="dinner-date" value="2026-05-23"><br>
+        <button class="btn" onclick="confirmDate()">Konfirmasi Tanggal 📅</button>
+        
+        <div id="confirmed-msg" style="display:none; margin-top:30px; padding-top:20px; border-top:2px dashed var(--pink2)">
+          <p id="dinner-text" style="font-size:1.15rem; line-height:1.6; color:var(--navy)"></p>
+          
+          <div id="email-section" style="display:none; margin-top:20px">
+            <input type="email" id="notif-email" placeholder="Masukkan email kamu..."><br>
+            <button class="btn" onclick="sendNotif()">Kirim Notifikasi 📧</button>
+          </div>
+          <p id="notif-sent-txt" style="margin-top:20px; color:green; font-weight:bold"></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // 1. KODE HITUNG MUNDUR (COUNTDOWN)
+    const td = new Date('2026-05-23T00:00:00').getTime();
+    function updateCd() {
+      const n = new Date().getTime(), diff = td - n;
+      if (diff <= 0) {
+        document.getElementById('d').textContent = '0';
+        document.getElementById('h').textContent = '0';
+        document.getElementById('m').textContent = '0';
+        document.getElementById('s').textContent = '0';
+        return;
+      }
+      document.getElementById('d').textContent = Math.floor(diff / 864e5);
+      document.getElementById('h').textContent = Math.floor((diff % 864e5) / 36e5);
+      document.getElementById('m').textContent = Math.floor((diff % 36e5) / 6e4);
+      document.getElementById('s').textContent = Math.floor((diff % 6e4) / 1e3);
+    }
+    setInterval(updateCd, 1000);
+    updateCd();
+
+    // 2. KODE INTERAKTIF DINNER & BURST EMOJI
+    const BE = ['🎉', '🎂', '💖', '🐟', '🐱', '✨'];
+    
     function confirmDate() {
       const dv = document.getElementById('dinner-date').value;
       if (!dv) { alert('Pilih tanggalnya dulu ya! 📅'); return; }
@@ -81,17 +166,19 @@
       const ds = new Date(dv).toLocaleDateString('id-ID', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
       
       document.getElementById('dinner-text').innerHTML = `Fayi telah memilih tanggal <strong>${ds}</strong> untuk birthday dinner di Dan's Burger! 🍔🐟<br><br><em>Masukkan email di bawah ini untuk mendapatkan notifikasi! 💕</em>`;
-      document.getElementById('confirmed-msg').style.style.display = 'block';
+      document.getElementById('confirmed-msg').style.display = 'block';
       document.getElementById('email-section').style.display = 'block';
       
-      // Efek dekorasi kembang api/burst emoji
-      for (let j = 0; j < 12; j++) {
+      // Efek dekorasi kembang api emoji
+      for (let j = 0; j < 15; j++) {
         setTimeout(() => {
           const b = document.createElement('div');
           b.className = 'burst';
           b.textContent = BE[Math.floor(Math.random() * BE.length)];
           b.style.left = (Math.random() * window.innerWidth) + 'px';
-          b.style.top = (Math.random() * window.innerHeight * .7 + 100) + 'px';
+          b.style.top = (Math.random() * window.innerHeight * .7 + window.scrollY) + 'px';
+          b.style.setProperty('--mx', (Math.random() * 200 - 100) + 'px');
+          b.style.setProperty('--my', (Math.random() * -200 - 50) + 'px');
           document.body.appendChild(b);
           setTimeout(() => b.remove(), 700);
         }, j * 60);
@@ -105,7 +192,7 @@
       const dv = document.getElementById('dinner-date').value;
       const ds = new Date(dv).toLocaleDateString('id-ID', { weekday: 'long', month: 'long', day: 'numeric' });
       
-      document.getElementById('notif-sent-txt').innerHTML = `✅ <strong>Semua tersimpan!</strong><br>Notifikasi akan dikirimkan ke <strong>${email}</strong><br>Pilihan Fayi: <strong>${ds}</strong> di Dan's Burger 🍔<br><br><em style="font-size:.85rem; color:var(--soft)">💡 Silakan screenshot halaman ini atau catat tanggalnya ya...</em>`;
+      document.getElementById('notif-sent-txt').innerHTML = `✅ <strong>Semua tersimpan dengan aman!</strong><br>Notifikasi akan dikirimkan ke <strong>${email}</strong><br>Pilihan Fayi: <strong>${ds}</strong> di Dan's Burger 🍔<br><br><em style="font-size:.85rem; color:var(--soft)">💡 Silakan screenshot halaman ini atau catat tanggalnya ya...</em>`;
     }
   </script>
 </body>
